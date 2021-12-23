@@ -132,11 +132,14 @@ class _HomePageState extends State<HomePage> {
             title: data[index].strMeal,
             onTap: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DetailPage(
-                            id: data[index].idMeal,
-                          )));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(
+                    id: data[index].idMeal,
+                    isFav: true,
+                  ),
+                ),
+              );
             },
           ),
         ),

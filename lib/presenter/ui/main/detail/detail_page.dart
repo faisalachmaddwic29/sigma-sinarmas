@@ -14,7 +14,9 @@ import 'package:sinarmas/presenter/widgets/loading.dart';
 
 class DetailPage extends StatefulWidget {
   final String id;
-  const DetailPage({Key? key, required this.id}) : super(key: key);
+  final bool isFav;
+  const DetailPage({Key? key, required this.id, required this.isFav})
+      : super(key: key);
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -285,21 +287,24 @@ class _DetailPageState extends State<DetailPage> {
                   return primaryButton(
                     context,
                     text: 'Add To Favorite',
-                    onTap: () {
-                      FavoirteRepository().insertFavorite(Favorite(
-                          id: int.tryParse(state.meal.idMeal ?? '0') ?? 0,
-                          idMeal: int.tryParse(state.meal.idMeal ?? '0') ?? 0,
-                          strCategory: state.meal.strCategory ?? '',
-                          strArea: state.meal.strArea ?? '',
-                          strMeal: state.meal.strMeal ?? '',
-                          strMealThumb: state.meal.strMealThumb ?? ''));
+                    onTap: widget.isFav
+                        ? () {
+                            FavoirteRepository().insertFavorite(Favorite(
+                                id: int.tryParse(state.meal.idMeal ?? '0') ?? 0,
+                                idMeal:
+                                    int.tryParse(state.meal.idMeal ?? '0') ?? 0,
+                                strCategory: state.meal.strCategory ?? '',
+                                strArea: state.meal.strArea ?? '',
+                                strMeal: state.meal.strMeal ?? '',
+                                strMealThumb: state.meal.strMealThumb ?? ''));
 
-                      alertCompleteProfile(context, onTap: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      });
-                      // Navigator.pop(context);
-                    },
+                            alertCompleteProfile(context, onTap: () {
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            });
+                            // Navigator.pop(context);
+                          }
+                        : null,
                   );
                 }
                 return primaryButton(

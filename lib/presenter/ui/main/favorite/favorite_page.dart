@@ -61,6 +61,7 @@ class _FavoritePageState extends State<FavoritePage> {
                             MaterialPageRoute(
                                 builder: (context) => DetailPage(
                                       id: data.toString(),
+                                      isFav: false,
                                     )));
                       },
                       child: Container(

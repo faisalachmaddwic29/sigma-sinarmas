@@ -40,9 +40,11 @@ class _SearchPageState extends State<SearchPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                              id: data[index].idMeal,
-                            )));
+                      builder: (context) => DetailPage(
+                        id: data[index].idMeal,
+                        isFav: true,
+                      ),
+                    ));
               },
             ),
           ),
