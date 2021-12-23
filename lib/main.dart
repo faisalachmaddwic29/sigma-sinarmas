@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:sinarmas/data/local/database_manager.dart';
 import 'package:sinarmas/di/serivce_locator.dart';
 import 'package:sinarmas/presenter/ui/initial/initial_page.dart';
 
